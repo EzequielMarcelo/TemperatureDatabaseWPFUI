@@ -48,7 +48,7 @@
                            IsBackButtonVisible="Collapsed"
                            IsPaneToggleVisible="True"
                            MenuItemsSource="{Binding ViewModel.MenuItems, Mode=OneWay}"
-                           OpenPaneLength="310"
+                           OpenPaneLength="120"
                            PaneDisplayMode="Left">
             <ui:NavigationView.Header>
                 <ui:BreadcrumbBar x:Name="BreadcrumbBar" Margin="42,32,42,20" />
