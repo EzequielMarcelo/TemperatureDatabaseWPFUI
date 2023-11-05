@@ -27,6 +27,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased] - 2023-11-05
 
 ### CHANGED
+- Dashboard page was deleted and replaced by the homepage.
+
+---
+
+## [Unreleased] - 2023-11-05
+
+### CHANGED
 - Project icon changed to temperature gauge.
 - Removed WPFUI icon and images.
 

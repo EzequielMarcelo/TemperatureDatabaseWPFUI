@@ -5,6 +5,7 @@
 
 using System.Collections.ObjectModel;
 using TemperatureDataBaseWPF.Utility;
+using TemperatureDataBaseWPF.Views.Pages;
 using Wpf.Ui.Common;
 using Wpf.Ui.Controls;
 
@@ -22,7 +23,7 @@ namespace TemperatureDataBaseWPF.ViewModels.Windows
             {
                 Content = "Home",
                 Icon = new SymbolIcon { Symbol = SymbolRegular.Home24 },
-                TargetPageType = typeof(Views.Pages.DashboardPage)
+                TargetPageType = typeof(HomePageView)
             },
             new NavigationViewItem()
             {
