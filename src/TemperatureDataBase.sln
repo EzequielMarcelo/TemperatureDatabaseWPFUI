@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureDataBaseWPF", "TemperatureDataBaseWPF\TemperatureDataBaseWPF.csproj", "{87F6E4CD-5117-417D-AD39-3C4F27F614EC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{87F6E4CD-5117-417D-AD39-3C4F27F614EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87F6E4CD-5117-417D-AD39-3C4F27F614EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87F6E4CD-5117-417D-AD39-3C4F27F614EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87F6E4CD-5117-417D-AD39-3C4F27F614EC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D777209F-37D7-4B69-A71E-11F228822F68}
+	EndGlobalSection
+EndGlobal
