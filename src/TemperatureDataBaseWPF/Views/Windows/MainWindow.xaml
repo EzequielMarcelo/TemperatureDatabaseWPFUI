@@ -17,7 +17,6 @@
     ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     ExtendsContentIntoTitleBar="True"
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-    WindowBackdropType="Mica"
     WindowCornerPreference="Round"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
@@ -29,11 +28,11 @@
     </ui:FluentWindow.InputBindings>
 
     <Grid>
-        <ui:TitleBar
-            x:Name="TitleBar"
-            Title="{Binding ViewModel.ApplicationTitle}"
-            Grid.Row="0"
-            CloseWindowByDoubleClickOnIcon="True">
+        <ui:TitleBar Grid.Row="0"
+                     x:Name="TitleBar"
+                     Title="{Binding ViewModel.ApplicationTitle}"            
+                     Background="{DynamicResource ApplicationBackgroundBrush}"
+                     CloseWindowByDoubleClickOnIcon="True">
             <ui:TitleBar.Icon>
                 <ui:ImageIcon Source="pack://application:,,,/Assets/wpfui-icon-256.png" />
             </ui:TitleBar.Icon>

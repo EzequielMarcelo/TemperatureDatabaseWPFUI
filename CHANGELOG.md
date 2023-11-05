@@ -27,6 +27,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased] - 2023-11-04
 
 ### ADDED
+- The window color is independent of the operating system's custom color.
+
+---
+
+## [Unreleased] - 2023-11-04
+
+### ADDED
 - .gitignore file.
 - Changelog file.
 - WPF UI Template project, the extension can be found via the link https://marketplace.visualstudio.com/items?itemName=lepo.wpf-ui 
