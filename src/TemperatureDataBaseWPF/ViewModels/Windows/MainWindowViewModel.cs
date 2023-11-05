@@ -4,6 +4,7 @@
 // All Rights Reserved.
 
 using System.Collections.ObjectModel;
+using TemperatureDataBaseWPF.Utility;
 using Wpf.Ui.Common;
 using Wpf.Ui.Controls;
 
@@ -12,7 +13,7 @@ namespace TemperatureDataBaseWPF.ViewModels.Windows
     public partial class MainWindowViewModel : ObservableObject
     {
         [ObservableProperty]
-        private string _applicationTitle = "WPF UI - TemperatureDataBaseWPF";
+        private string _applicationTitle = string.Empty;
 
         [ObservableProperty]
         private ObservableCollection<object> _menuItems = new()
@@ -47,5 +48,10 @@ namespace TemperatureDataBaseWPF.ViewModels.Windows
         {
             new MenuItem { Header = "Home", Tag = "tray_home" }
         };
+
+        public MainWindowViewModel()
+        {
+            _applicationTitle = AssemblyUtility.GetAssemblyTitle();
+        }        
     }
 }

@@ -3,6 +3,7 @@
 // Copyright (C) Leszek Pomianowski and WPF UI Contributors.
 // All Rights Reserved.
 
+using TemperatureDataBaseWPF.Utility;
 using Wpf.Ui.Controls;
 
 namespace TemperatureDataBaseWPF.ViewModels.Pages
@@ -13,6 +14,9 @@ namespace TemperatureDataBaseWPF.ViewModels.Pages
 
         [ObservableProperty]
         private string _appVersion = String.Empty;
+
+        [ObservableProperty]
+        private string _appAbout = String.Empty;
 
         [ObservableProperty]
         private Wpf.Ui.Appearance.ThemeType _currentTheme = Wpf.Ui.Appearance.ThemeType.Unknown;
@@ -28,15 +32,10 @@ namespace TemperatureDataBaseWPF.ViewModels.Pages
         private void InitializeViewModel()
         {
             CurrentTheme = Wpf.Ui.Appearance.Theme.GetAppTheme();
-            AppVersion = $"TemperatureDataBaseWPF - {GetAssemblyVersion()}";
+            AppVersion = $"{AssemblyUtility.GetAssemblyTitle()} - {AssemblyUtility.GetAssemblyVersion()}";
+            AppAbout = $"About {AssemblyUtility.GetAssemblyTitle()}";
 
             _isInitialized = true;
-        }
-
-        private string GetAssemblyVersion()
-        {
-            return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version?.ToString()
-                ?? String.Empty;
         }
 
         [RelayCommand]
