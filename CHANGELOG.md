@@ -26,6 +26,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - 2023-11-04
 
+### REMOVED
+- Navigation view Back button removed.
+
+---
+
+## [Unreleased] - 2023-11-04
+
 ### ADDED
 - TitleBar and NavigationView in separate grids.
 
