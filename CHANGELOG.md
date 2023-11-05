@@ -24,6 +24,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Unreleased] - 2023-11-05
+
+### REMOVED
+- Search box removed from navigation pane.
+
+---
+
 ## [Unreleased] - 2023-11-04
 
 ### CHANGED
