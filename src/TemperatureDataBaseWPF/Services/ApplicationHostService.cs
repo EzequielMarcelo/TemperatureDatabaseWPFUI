@@ -62,6 +62,7 @@ namespace TemperatureDataBaseWPF.Services
                 return;
             }
 
+            navigationWindow.NavigationView.IsPaneOpen = false;
             navigationWindow.NavigationView.Navigate(typeof(DashboardPage));
         }
     }
