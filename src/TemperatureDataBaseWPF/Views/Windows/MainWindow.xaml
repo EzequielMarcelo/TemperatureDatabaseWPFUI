@@ -28,6 +28,13 @@
     </ui:FluentWindow.InputBindings>
 
     <Grid>
+        <Grid.RowDefinitions>
+            <!--TitleBar-->
+            <RowDefinition Height="Auto"/>
+            <!--Navigation View-->
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
         <ui:TitleBar Grid.Row="0"
                      x:Name="TitleBar"
                      Title="{Binding ViewModel.ApplicationTitle}"            
@@ -38,18 +45,17 @@
             </ui:TitleBar.Icon>
         </ui:TitleBar>
 
-        <ui:NavigationView
-            x:Name="NavigationView"
-            Padding="42,0,42,0"
-            BreadcrumbBar="{Binding ElementName=BreadcrumbBar}"
-            FooterMenuItemsSource="{Binding ViewModel.FooterMenuItems, Mode=OneWay}"
-            FrameMargin="0"
-            IsBackButtonVisible="Visible"
-            IsPaneToggleVisible="True"
-            MenuItemsSource="{Binding ViewModel.MenuItems, Mode=OneWay}"
-            OpenPaneLength="310"
-            PaneDisplayMode="Left"
-            TitleBar="{Binding ElementName=TitleBar, Mode=OneWay}">
+        <ui:NavigationView Grid.Row="1"
+                           x:Name="NavigationView"
+                           Padding="42,0,42,0"
+                           BreadcrumbBar="{Binding ElementName=BreadcrumbBar}"
+                           FooterMenuItemsSource="{Binding ViewModel.FooterMenuItems, Mode=OneWay}"
+                           FrameMargin="0"
+                           IsBackButtonVisible="Visible"
+                           IsPaneToggleVisible="True"
+                           MenuItemsSource="{Binding ViewModel.MenuItems, Mode=OneWay}"
+                           OpenPaneLength="310"
+                           PaneDisplayMode="Left">
             <ui:NavigationView.Header>
                 <ui:BreadcrumbBar x:Name="BreadcrumbBar" Margin="42,32,42,20" />
             </ui:NavigationView.Header>
