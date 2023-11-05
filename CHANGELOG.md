@@ -26,6 +26,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - 2023-11-05
 
+### CHANGED
+- Project icon changed to temperature gauge.
+- Removed WPFUI icon and images.
+
+---
+
+## [Unreleased] - 2023-11-05
+
 ### FIXED
 - Bug in Navigatio view background color when switching between dark and light theme.
 
