@@ -27,6 +27,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased] - 2023-11-07
 
 ### ADDED
+- Baud Rate and Selected Baud rate properties.
+- Filling baud rate comboBox on the settings page.
+
+---
+
+## [Unreleased] - 2023-11-07
+
+### ADDED
 - IService and Service added as sigleton.
 - GetPortNames serial method created.
 - Behaviors added to binding events.

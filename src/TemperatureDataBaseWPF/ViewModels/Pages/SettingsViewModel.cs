@@ -31,6 +31,12 @@ namespace TemperatureDataBaseWPF.ViewModels.Pages
         [ObservableProperty]
         private string _selectedPortName;
 
+        [ObservableProperty]
+        private ObservableCollection<int> _BaudRates;
+
+        [ObservableProperty]
+        private int _selectedBaudRate;
+
         public SettingsViewModel(IService service)
         {
             _serialHandler = service.SerialHandler;
@@ -50,7 +56,14 @@ namespace TemperatureDataBaseWPF.ViewModels.Pages
             AppVersion = $"{AssemblyUtility.GetAssemblyTitle()} - {AssemblyUtility.GetAssemblyVersion()}";
             AppAbout = $"About {AssemblyUtility.GetAssemblyTitle()}";
             PortNames = new ObservableCollection<string>();
+            BaudRates = new ObservableCollection<int>()
+            {
+                9600,
+                115200
+            };
             
+            SelectedBaudRate = BaudRates.First();
+
             RefreshPortNames();
 
             _isInitialized = true;
