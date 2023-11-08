@@ -39,6 +39,7 @@ namespace TemperatureDataBaseWPF
                 services.AddSingleton<INavigationService, NavigationService>();
                 services.AddSingleton<ISnackbarService, SnackbarService>();
                 services.AddSingleton<IContentDialogService, ContentDialogService>();
+                services.AddSingleton<IService, Service>();
 
                 services.AddSingleton<HomePageView>();
                 services.AddSingleton<HomePageViewModel>();

@@ -8,5 +8,9 @@ namespace TemperatureDataBaseWPF.Services
         {
             
         }
+        public string[] GetPortNames()
+        {
+            return SerialPort.GetPortNames();
+        }
     }
 }

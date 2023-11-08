@@ -3,6 +3,9 @@
 // Copyright (C) Leszek Pomianowski and WPF UI Contributors.
 // All Rights Reserved.
 
+using System.Collections.ObjectModel;
+using System.Windows.Media;
+using TemperatureDataBaseWPF.Services;
 using TemperatureDataBaseWPF.Utility;
 using Wpf.Ui.Controls;
 
@@ -11,6 +14,7 @@ namespace TemperatureDataBaseWPF.ViewModels.Pages
     public partial class SettingsViewModel : ObservableObject, INavigationAware
     {
         private bool _isInitialized = false;
+        private SerialDataAcquisition _serialHandler;
 
         [ObservableProperty]
         private string _appVersion = String.Empty;
@@ -20,6 +24,17 @@ namespace TemperatureDataBaseWPF.ViewModels.Pages
 
         [ObservableProperty]
         private Wpf.Ui.Appearance.ThemeType _currentTheme = Wpf.Ui.Appearance.ThemeType.Unknown;
+
+        [ObservableProperty]
+        private ObservableCollection<string> _portNames;
+
+        [ObservableProperty]
+        private string _selectedPortName;
+
+        public SettingsViewModel(IService service)
+        {
+            _serialHandler = service.SerialHandler;
+        }
 
         public void OnNavigatedTo()
         {
@@ -34,6 +49,9 @@ namespace TemperatureDataBaseWPF.ViewModels.Pages
             CurrentTheme = Wpf.Ui.Appearance.Theme.GetAppTheme();
             AppVersion = $"{AssemblyUtility.GetAssemblyTitle()} - {AssemblyUtility.GetAssemblyVersion()}";
             AppAbout = $"About {AssemblyUtility.GetAssemblyTitle()}";
+            PortNames = new ObservableCollection<string>();
+            
+            RefreshPortNames();
 
             _isInitialized = true;
         }
@@ -61,6 +79,20 @@ namespace TemperatureDataBaseWPF.ViewModels.Pages
 
                     break;
             }
+        }
+
+        [RelayCommand]
+        private void RefreshPortNames()
+        {
+            PortNames.Clear();
+
+            foreach (var ports in _serialHandler.GetPortNames())
+            {
+                PortNames.Add(ports);
+            }
+
+            if(PortNames.Count > 0)
+                SelectedPortName = PortNames.First();
         }
     }
 }

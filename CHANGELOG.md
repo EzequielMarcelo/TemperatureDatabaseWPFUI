@@ -27,6 +27,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased] - 2023-11-07
 
 ### ADDED
+- IService and Service added as sigleton.
+- GetPortNames serial method created.
+- Behaviors added to binding events.
+- Service added on settings page.
+- Filling in the port names comboBox.
+- Updating port names when opening comboBox.
+
+---
+
+## [Unreleased] - 2023-11-07
+
+### ADDED
 - Class to acquire serial data.
 
 ---

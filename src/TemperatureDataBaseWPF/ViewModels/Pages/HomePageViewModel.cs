@@ -4,11 +4,14 @@ using LiveChartsCore.Measure;
 using LiveChartsCore.SkiaSharpView.Extensions;
 using LiveChartsCore.SkiaSharpView.Painting;
 using SkiaSharp;
+using TemperatureDataBaseWPF.Services;
 
 namespace TemperatureDataBaseWPF.ViewModels.Pages
 {
     public partial class HomePageViewModel : ObservableObject
     {
+        private SerialDataAcquisition _portHandler;
+
         public HomePageViewModel()
         {
             Temperature = new ObservableValue()

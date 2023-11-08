@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:TemperatureDataBaseWPF.Views.Pages"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       Title="SettingsPage"
       d:DataContext="{d:DesignInstance local:SettingsPage,
                                          IsDesignTimeCreatable=False}"
@@ -15,7 +16,7 @@
       ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
       Foreground="{DynamicResource TextFillColorPrimaryBrush}"
       mc:Ignorable="d">
-    
+  
     <Page.Resources>
         <helpers:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
     </Page.Resources>
@@ -42,7 +43,15 @@
                 <TextBlock Text="Port Name: "
                            VerticalAlignment="Center"/>
                 <StackPanel HorizontalAlignment="Right">
-                    <ComboBox Width="100"/>
+                    <ComboBox Width="100"
+                              ItemsSource="{Binding ViewModel.PortNames}"
+                              SelectedItem="{Binding ViewModel.SelectedPortName}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="DropDownOpened">
+                                <i:InvokeCommandAction Command="{Binding ViewModel.RefreshPortNamesCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>                        
+                    </ComboBox>
                 </StackPanel>                              
             </DockPanel>
             <!--baud rate-->

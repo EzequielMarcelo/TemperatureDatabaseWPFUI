@@ -3,6 +3,7 @@
 // Copyright (C) Leszek Pomianowski and WPF UI Contributors.
 // All Rights Reserved.
 
+using TemperatureDataBaseWPF.Services;
 using TemperatureDataBaseWPF.ViewModels.Pages;
 using Wpf.Ui.Controls;
 
