@@ -24,6 +24,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Unreleased] - 2023-11-07
+
+### ADDED
+- Port name and baud rate for connecting to the Arduino added to the settings page.
+
+---
+
 ## [Unreleased] - 2023-11-05
 
 ### ADDED
