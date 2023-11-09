@@ -10,10 +10,13 @@ namespace TemperatureDataBaseWPF.ViewModels.Pages
 {
     public partial class HomePageViewModel : ObservableObject
     {
-        private SerialDataAcquisition _portHandler;
+        private SerialDataAcquisition _serialHandler;
 
-        public HomePageViewModel()
+        public HomePageViewModel(IService service)
         {
+            _serialHandler = service.SerialHandler;
+            _serialHandler.OnUpdateTemperature += SerialUpdateTemperature;
+
             Temperature = new ObservableValue()
             {
                 Value = 20,
@@ -24,20 +27,27 @@ namespace TemperatureDataBaseWPF.ViewModels.Pages
             Series = GaugeGenerator.BuildSolidGauge(
                 new GaugeItem(Temperature, series =>
                 {
-                    series.Fill = new SolidColorPaint(SKColors.YellowGreen);
-                    series.DataLabelsSize = 50;
-                    series.IsHoverable = false;
+                    series.Fill = new SolidColorPaint(SKColors.YellowGreen);                    
+                    series.IsHoverable = false;                  
+                    series.InnerRadius = innerRadius;
                     series.DataLabelsPaint = new SolidColorPaint(SKColors.Red);
                     series.DataLabelsPosition = PolarLabelsPosition.ChartCenter;
-                    series.InnerRadius = innerRadius;
-                    series.DataLabelsFormatter = x => x.Coordinate.PrimaryValue + "ºC";
-                 }),
+                    series.DataLabelsSize = 60;
+                    series.DataLabelsFormatter = x => "Temperature \r" + x.Coordinate.PrimaryValue.ToString("F2") + "ºC";
+                }),
+
                 new GaugeItem(GaugeItem.Background, series =>
                 {
                     series.InnerRadius = innerRadius;
                     series.Fill = new SolidColorPaint(new SKColor(100, 181, 246, 90));
                 }));
         }
+
+        private void SerialUpdateTemperature(object? sender, double temperature)
+        {
+            Temperature.Value = temperature;
+        }
+
         public IEnumerable<ISeries> Series { get; set; }
         public ObservableValue Temperature {  get; set; }
     }

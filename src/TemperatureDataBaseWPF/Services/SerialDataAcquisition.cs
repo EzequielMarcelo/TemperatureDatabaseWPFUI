@@ -10,6 +10,8 @@ namespace TemperatureDataBaseWPF.Services
 
         private SerialPort _serialPort;
 
+        public EventHandler<double> OnUpdateTemperature;
+
         public SerialDataAcquisition()
         {
             _serialPort = new SerialPort();
@@ -36,6 +38,7 @@ namespace TemperatureDataBaseWPF.Services
                 case READ_TEMP:
                     int ADCValue = int.Parse(sepateData[1]);
                     double tempCelsius = GetTempCelsius(ADCValue);
+                    OnUpdateTemperature(this, tempCelsius);
                     break;
             }            
         }

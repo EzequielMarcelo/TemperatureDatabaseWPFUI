@@ -27,6 +27,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased] - 2023-11-09
 
 ### ADDED
+- Update temperature event.
+- Updating gauge value with value received by serial.
+
+---
+
+## [Unreleased] - 2023-11-09
+
+### ADDED
 - Serial data received event.
 - Serial decode method.
 - Method to convert temperature to celsius.
