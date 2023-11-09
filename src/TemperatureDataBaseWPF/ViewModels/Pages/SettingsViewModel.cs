@@ -4,8 +4,8 @@
 // All Rights Reserved.
 
 using System.Collections.ObjectModel;
-using System.Windows.Media;
 using TemperatureDataBaseWPF.Services;
+using TemperatureDataBaseWPF.Settings;
 using TemperatureDataBaseWPF.Utility;
 using Wpf.Ui.Controls;
 
@@ -106,6 +106,13 @@ namespace TemperatureDataBaseWPF.ViewModels.Pages
 
             if(PortNames.Count > 0)
                 SelectedPortName = PortNames.First();
+        }
+        [RelayCommand]
+        private void SaveSettings()
+        {
+            SerialPortSettings.Default.PortName = SelectedPortName;
+            SerialPortSettings.Default.BaudRate = SelectedBaudRate;
+            SerialPortSettings.Default.Save();
         }
     }
 }

@@ -16,7 +16,7 @@
       ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
       Foreground="{DynamicResource TextFillColorPrimaryBrush}"
       mc:Ignorable="d">
-  
+    
     <Page.Resources>
         <helpers:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
     </Page.Resources>
@@ -64,6 +64,8 @@
                               SelectedItem="{Binding ViewModel.SelectedBaudRate}"/>
                 </StackPanel>
             </DockPanel>
+            <ui:Button Content="Save"
+                       Command="{Binding ViewModel.SaveSettingsCommand}"/>
         </StackPanel>
         <!--theme settigs-->
         <StackPanel Grid.Column="2">

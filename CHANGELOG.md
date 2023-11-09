@@ -24,6 +24,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Unreleased] - 2023-11-09
+
+### ADDED
+- File.settings to save settings.
+- Button to save port settings on the settings page.
+- Method to connect to a serial port through saved port settings.
+
+---
+
 ## [Unreleased] - 2023-11-07
 
 ### ADDED
