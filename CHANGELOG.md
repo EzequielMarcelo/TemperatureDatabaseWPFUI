@@ -26,6 +26,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - 2023-11-09
 
+### FIXED
+- Updates the gauge only if the temperature value is less than 100.
+
+---
+
+## [Unreleased] - 2023-11-09
+
 ### ADDED
 - Update temperature event.
 - Updating gauge value with value received by serial.
