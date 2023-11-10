@@ -45,6 +45,8 @@ namespace TemperatureDataBaseWPF
                 services.AddSingleton<HomePageViewModel>();
                 services.AddSingleton<DataPage>();
                 services.AddSingleton<DataViewModel>();
+                services.AddSingleton<SetParametersPageView>();
+                services.AddSingleton<SetParametersPageViewModel>();
                 services.AddSingleton<SettingsPage>();
                 services.AddSingleton<SettingsViewModel>();
             }).Build();
