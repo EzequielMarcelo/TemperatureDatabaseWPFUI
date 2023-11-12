@@ -12,29 +12,25 @@ namespace TemperatureDataBaseWPF.Helpers
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (parameter is not String enumString)
-            {
-                throw new ArgumentException("ExceptionEnumToBooleanConverterParameterMustBeAnEnumName");
-            }
+            string? enumValue = value.ToString();
+            string? targetValue = parameter.ToString();
 
-            if (!Enum.IsDefined(typeof(Wpf.Ui.Appearance.ThemeType), value))
-            {
-                throw new ArgumentException("ExceptionEnumToBooleanConverterValueMustBeAnEnum");
-            }
+            if(enumValue == null || targetValue == null)
+                throw new ArgumentException("ExceptionEnumToBooleanConverterValuesCannotBeNull");
 
-            var enumValue = Enum.Parse(typeof(Wpf.Ui.Appearance.ThemeType), enumString);
-
-            return enumValue.Equals(value);
+            return enumValue.Equals(targetValue, StringComparison.InvariantCultureIgnoreCase);                              
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (parameter is not String enumString)
-            {
-                throw new ArgumentException("ExceptionEnumToBooleanConverterParameterMustBeAnEnumName");
-            }
+            string? targetValue = parameter.ToString();
+            if (value == null || targetValue == null || !(value is bool))
+                throw new ArgumentException("ExceptionEnumToBooleanConverterValuesCannotBeNull");
 
-            return Enum.Parse(typeof(Wpf.Ui.Appearance.ThemeType), enumString);
+            if ((bool)value)
+                return Enum.Parse(targetType, targetValue, ignoreCase: true);
+
+            return false;
         }
     }
 }

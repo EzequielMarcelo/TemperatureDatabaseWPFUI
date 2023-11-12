@@ -24,6 +24,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Unreleased] - 2023-11-12
+
+### CHANGED
+- Enum to boolean converter modified to be more generic for any type of enum.
+
+---
+
 ## [Unreleased] - 2023-11-09
 
 ### ADDED
