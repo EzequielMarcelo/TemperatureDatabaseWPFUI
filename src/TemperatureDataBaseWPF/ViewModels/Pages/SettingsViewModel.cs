@@ -61,8 +61,9 @@ namespace TemperatureDataBaseWPF.ViewModels.Pages
                 9600,
                 115200
             };
-            
-            SelectedBaudRate = BaudRates.First();
+
+            SelectedBaudRate = SerialPortSettings.Default.BaudRate;
+            SelectedPortName = SerialPortSettings.Default.PortName;
 
             RefreshPortNames();
 
@@ -98,8 +99,8 @@ namespace TemperatureDataBaseWPF.ViewModels.Pages
                 PortNames.Add(ports);
             }
 
-            if(PortNames.Count > 0)
-                SelectedPortName = PortNames.First();
+            if (!PortNames.Contains(SelectedPortName))
+                SelectedPortName = PortNames.FirstOrDefault();
         }
         [RelayCommand]
         private void SaveSettings()
