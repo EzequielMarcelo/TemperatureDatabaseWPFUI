@@ -70,25 +70,19 @@ namespace TemperatureDataBaseWPF.ViewModels.Pages
         }
 
         [RelayCommand]
-        private void OnChangeTheme(string parameter)
+        private void OnChangeTheme()
         {
-            switch (parameter)
+            switch (CurrentTheme)
             {
-                case "theme_light":
-                    if (CurrentTheme == Wpf.Ui.Appearance.ThemeType.Light)
-                        break;
+                case Wpf.Ui.Appearance.ThemeType.Light:
 
-                    Wpf.Ui.Appearance.Theme.Apply(Wpf.Ui.Appearance.ThemeType.Light);
-                    CurrentTheme = Wpf.Ui.Appearance.ThemeType.Light;
+                    Wpf.Ui.Appearance.Theme.Apply(CurrentTheme);
 
                     break;
 
                 default:
-                    if (CurrentTheme == Wpf.Ui.Appearance.ThemeType.Dark)
-                        break;
 
-                    Wpf.Ui.Appearance.Theme.Apply(Wpf.Ui.Appearance.ThemeType.Dark);
-                    CurrentTheme = Wpf.Ui.Appearance.ThemeType.Dark;
+                    Wpf.Ui.Appearance.Theme.Apply(CurrentTheme);
 
                     break;
             }

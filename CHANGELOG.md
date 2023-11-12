@@ -26,6 +26,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - 2023-11-12
 
+### CHANGED
+- Enum to boolean convert modified in the method that changes between themes on the settings page
+
+---
+
+## [Unreleased] - 2023-11-12
+
 ### ADDED
 - Duty cycle parameter.
 - Work duration parameter.
