@@ -4,18 +4,126 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      xmlns:helpers="clr-namespace:TemperatureDataBaseWPF.Helpers"
       xmlns:local="clr-namespace:TemperatureDataBaseWPF.Views.Pages"
       mc:Ignorable="d" 
       d:DataContext="{d:DesignInstance local:SetParametersPageView,
                                              IsDesignTimeCreatable=False}"
-      d:DesignHeight="450" 
-      d:DesignWidth="800"
+      MinHeight="450" 
+      MinWidth="800"
       Title="Parameters"
       ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
       ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
       Foreground="{DynamicResource TextFillColorPrimaryBrush}">
 
+    <Page.Resources>
+        <helpers:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
+    </Page.Resources>
+    
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <!--working-->
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <!--working-->
+        <StackPanel Orientation="Vertical">
+            <TextBlock Margin="0,0,0,12" 
+                       FontSize="20"
+                       FontWeight="Medium"
+                       Text="Working" />
+            <!--work mode-->
+            <TextBlock Margin="0,12,0,0" 
+                       Text="Mode" />
+            <RadioButton Margin="0,12,0,0"
+                         Command="{Binding ViewModel.ChangeWorkModeCommand}"
+                         Content="Automatic"
+                         GroupName="modeSelect"
+                         IsChecked="{Binding ViewModel.CurrentMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=AUTOMATIC, Mode=TwoWay}" />
+            <RadioButton Margin="0,8,0,0"
+                         Command="{Binding ViewModel.ChangeWorkModeCommand}"
+                         Content="Manual"
+                         GroupName="modeSelect"
+                         IsChecked="{Binding ViewModel.CurrentMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=MANUAL, Mode=TwoWay}" />
+            <!--maximum dutycicle-->
+            <StackPanel Orientation="Vertical">
+                <TextBlock Margin="0,12,0,12"
+                           Text="Duty Cycle"/>
+                <ui:Card Background="{ui:ThemeResource CardStrokeColorDefaultBrush}"
+                         BorderBrush="{ui:ThemeResource ControlElevationBorderBrush}">
+                    <DockPanel>
+                        <Slider Width="200"
+                                Margin="0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Minimum="0"
+                                Maximum="255"                                
+                                Value="{Binding ViewModel.DutyCycle, Mode=TwoWay}"/>
+                        <ui:NumberBox PlaceholderText="s"
+                                      MinWidth="105"
+                                      MaxLength="3"
+                                      HorizontalAlignment="Right"
+                                      HorizontalContentAlignment="Right"
+                                      ClearButtonEnabled="False"                                      
+                                      Minimum="0"
+                                      Maximum="255"
+                                      Value="{Binding ViewModel.DutyCycle, Mode=TwoWay}"/>
+                    </DockPanel>
+                </ui:Card>
+            </StackPanel>
+            <!--maximum pause duration-->
+            <StackPanel Orientation="Vertical">
+                <TextBlock Margin="0,12,0,12"
+                           Text="Working duration"/>
+                <ui:Card Background="{ui:ThemeResource CardStrokeColorDefaultBrush}"
+                         BorderBrush="{ui:ThemeResource ControlElevationBorderBrush}">
+                    <DockPanel>
+                        <Slider Width="200"
+                                Margin="0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Maximum="100"
+                                Minimum="0"
+                                Value="{Binding ViewModel.WorkDuration, Mode=TwoWay}"/>
+                        <ui:NumberBox PlaceholderText="s"
+                                      MinWidth="105"
+                                      MaxLength="3"
+                                      HorizontalAlignment="Right"
+                                      HorizontalContentAlignment="Right"
+                                      ClearButtonEnabled="False"                                      
+                                      Minimum="0"
+                                      Maximum="100"
+                                      Value="{Binding ViewModel.WorkDuration, Mode=TwoWay}"/>
+                    </DockPanel>
+                </ui:Card>
+            </StackPanel>
+            <!--maximum pause duration-->
+            <StackPanel Orientation="Vertical">
+                <TextBlock Margin="0,12,0,12"
+                           Text="Pause duration"/>
+                <ui:Card Background="{ui:ThemeResource CardStrokeColorDefaultBrush}"
+                         BorderBrush="{ui:ThemeResource ControlElevationBorderBrush}">
+                    <DockPanel>
+                        <Slider Width="200"
+                                Margin="0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Maximum="100"
+                                Minimum="0"
+                                Value="{Binding ViewModel.PauseDuration, Mode=TwoWay}"/>
+                        <ui:NumberBox PlaceholderText="s"
+                                      MinWidth="105"
+                                      MaxLength="3"
+                                      HorizontalAlignment="Right"
+                                      HorizontalContentAlignment="Right"
+                                      ClearButtonEnabled="False"                                      
+                                      Minimum="0"
+                                      Maximum="100"
+                                      Value="{Binding ViewModel.PauseDuration, Mode=TwoWay}"/>
+                    </DockPanel>
+                </ui:Card>
+            </StackPanel>
+            <ui:Button Margin="0,10,0,10" 
+                       Content="Apply"/>
+        </StackPanel>
     </Grid>
 </Page>

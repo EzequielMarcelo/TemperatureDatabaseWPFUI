@@ -30,6 +30,6 @@ namespace TemperatureDataBaseWPF.Views.Pages
             DataContext = this;
 
             InitializeComponent();
-        }        
+        }
     }
 }
