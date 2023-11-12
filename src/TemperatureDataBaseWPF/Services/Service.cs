@@ -1,4 +1,4 @@
-namespace TemperatureDataBaseWPF.Services
+﻿namespace TemperatureDataBaseWPF.Services
 {
     public class Service : IService
     {
@@ -13,6 +13,7 @@ namespace TemperatureDataBaseWPF.Services
 
         #region Interface
         public SerialDataAcquisition SerialHandler => _serialHandler;
+        public LoadController LoadController => _loadController;
         #endregion
     }
 }

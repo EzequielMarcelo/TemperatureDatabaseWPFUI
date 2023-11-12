@@ -123,7 +123,8 @@
                 </ui:Card>
             </StackPanel>
             <ui:Button Margin="0,10,0,10" 
-                       Content="Apply"/>
+                       Content="Apply"
+                       Command="{Binding ViewModel.SetParametersCommand}"/>
         </StackPanel>
     </Grid>
 </Page>

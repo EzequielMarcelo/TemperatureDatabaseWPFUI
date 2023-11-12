@@ -1,12 +1,16 @@
 ﻿using System.Linq;
 using System.Windows.Input;
+using TemperatureDataBaseWPF.Services;
 
 namespace TemperatureDataBaseWPF.ViewModels.Pages
 {
     public partial class SetParametersPageViewModel : ObservableObject
-    {      
-        public SetParametersPageViewModel()
+    {
+        private LoadController _loadControl;
+        public SetParametersPageViewModel(IService service)
         {
+            _loadControl = service.LoadController;
+
             DutyCycle = 20;
             CurrentMode = WORK_MODE.MANUAL;
             OnChangeWorkMode();
@@ -42,6 +46,11 @@ namespace TemperatureDataBaseWPF.ViewModels.Pages
                     int a = 0;
                     break;
             }
+        }
+        [RelayCommand]
+        private void OnSetParameters()
+        {
+            _loadControl.SetParameters();
         }
     }
 }
