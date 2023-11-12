@@ -45,8 +45,12 @@ namespace TemperatureDataBaseWPF.ViewModels.Pages
 
         private void SerialUpdateTemperature(object? sender, double temperature)
         {
-            if (temperature > 100)
+            if (Temperature == null)
                 return;
+
+            if (temperature > 100)
+                temperature = 100;
+                
             Temperature.Value = temperature;
         }
 

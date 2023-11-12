@@ -38,7 +38,7 @@ namespace TemperatureDataBaseWPF.Services
                 case READ_TEMP:
                     int ADCValue = int.Parse(sepateData[1]);
                     double tempCelsius = GetTempCelsius(ADCValue);
-                    OnUpdateTemperature(this, tempCelsius);
+                    OnUpdateTemperature?.Invoke(this, tempCelsius);
                     break;
             }            
         }

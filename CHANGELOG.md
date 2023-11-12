@@ -27,6 +27,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased] - 2023-11-12
 
 ### FIXED
+- Exception when updating temperature value in gauge.
+
+---
+
+## [Unreleased] - 2023-11-12
+
+### FIXED
 - Loading saved port name on the settings page.
 - Loading saved baud rate on the settings page.
 
