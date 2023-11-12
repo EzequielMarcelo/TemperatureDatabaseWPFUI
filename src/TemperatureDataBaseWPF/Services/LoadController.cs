@@ -1,22 +1,27 @@
-﻿namespace TemperatureDataBaseWPF.Services
+﻿using TemperatureDataBaseWPF.Models;
+
+namespace TemperatureDataBaseWPF.Services
 {
     public class LoadController
     {
+        private ParametersModel _parameters;
+
         private CancellationTokenSource _loadControlCancel;
 
         public LoadController()
         {
             _loadControlCancel = new CancellationTokenSource();
+            _parameters = new ParametersModel();
         }
         private async Task LoadControlRoutine()
         {
             while(!_loadControlCancel.IsCancellationRequested)
             {
                 WorkRoutine();
-                await Task.Delay(20000);
+                await Task.Delay(_parameters.WorkDuration * 1000);  //Convert to milliseconds
                 PauseRoutine();
-                await Task.Delay(10000);
-            }            
+                await Task.Delay(_parameters.PauseDuration * 1000); //Convert to milliseconds
+            }
         }
         private void WorkRoutine()
         {
@@ -37,8 +42,9 @@
         {
             _loadControlCancel?.Cancel();
         }
-        public void SetParameters()
+        public void SetParameters(ParametersModel parameters)
         {
+            _parameters = new ParametersModel(parameters);   
             Stop();
             Start();
         }        

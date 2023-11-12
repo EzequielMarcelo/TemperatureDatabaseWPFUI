@@ -27,6 +27,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased] - 2023-11-12
 
 ### ADDED
+- Set Parameters Model.
+- Sending parameters to load controller class.
+
+---
+
+## [Unreleased] - 2023-11-12
+
+### ADDED
 - Method that applies the parameters on the set parameters page implemented.
 
 ---

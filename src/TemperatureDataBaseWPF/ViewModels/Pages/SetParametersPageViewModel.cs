@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Windows.Input;
+using TemperatureDataBaseWPF.Models;
 using TemperatureDataBaseWPF.Services;
 
 namespace TemperatureDataBaseWPF.ViewModels.Pages
@@ -50,7 +51,13 @@ namespace TemperatureDataBaseWPF.ViewModels.Pages
         [RelayCommand]
         private void OnSetParameters()
         {
-            _loadControl.SetParameters();
+            var parameters = new ParametersModel()
+            {
+                DutyCycle = DutyCycle,
+                WorkDuration = WorkDuration,
+                PauseDuration = PauseDuration,
+            };
+            _loadControl.SetParameters(parameters);
         }
     }
 }
