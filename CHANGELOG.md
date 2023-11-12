@@ -26,6 +26,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - 2023-11-12
 
+### ADDED
+- Load Controller class.
+- Load Control Routine task.
+- Work routine method.
+- Pause routine method.
+- Start method.
+- Stop method.
+- SetParameters.
+
+---
+
+## [Unreleased] - 2023-11-12
+
 ### FIXED
 - Exception when updating temperature value in gauge.
 
