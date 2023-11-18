@@ -8,7 +8,7 @@
         public Service()
         {
             _serialHandler = new SerialDataAcquisition();
-            _loadController = new LoadController();
+            _loadController = new LoadController(_serialHandler);
         }
 
         #region Interface

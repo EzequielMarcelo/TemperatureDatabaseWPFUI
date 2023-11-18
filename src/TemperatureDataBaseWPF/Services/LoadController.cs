@@ -4,18 +4,22 @@ namespace TemperatureDataBaseWPF.Services
 {
     public class LoadController
     {
+        private SerialDataAcquisition _serialHandler;
         private ParametersModel _parameters;
 
         private CancellationTokenSource _loadControlCancel;
 
-        public LoadController()
+        private const string LOAD_COMMAND = "L";
+
+        public LoadController(SerialDataAcquisition serialHandler)
         {
+            _serialHandler = serialHandler;
             _loadControlCancel = new CancellationTokenSource();
             _parameters = new ParametersModel();
         }
         private async Task LoadControlRoutine()
         {
-            while(!_loadControlCancel.IsCancellationRequested)
+            while (!_loadControlCancel.IsCancellationRequested)
             {
                 WorkRoutine();
                 await Task.Delay(_parameters.WorkDuration * 1000);  //Convert to milliseconds
@@ -25,11 +29,11 @@ namespace TemperatureDataBaseWPF.Services
         }
         private void WorkRoutine()
         {
-
+            _serialHandler.SendCommad(LOAD_COMMAND, _parameters.DutyCycle);
         }
         private void PauseRoutine()
         {
-
+            _serialHandler.SendCommad(LOAD_COMMAND, 0);   //Off
         }
         private void Start()
         {
@@ -44,9 +48,9 @@ namespace TemperatureDataBaseWPF.Services
         }
         public void SetParameters(ParametersModel parameters)
         {
-            _parameters = new ParametersModel(parameters);   
+            _parameters = new ParametersModel(parameters);
             Stop();
             Start();
-        }        
+        }
     }
 }

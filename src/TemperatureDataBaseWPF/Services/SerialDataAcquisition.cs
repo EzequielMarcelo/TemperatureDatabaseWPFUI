@@ -69,5 +69,12 @@ namespace TemperatureDataBaseWPF.Services
         {
             return SerialPort.GetPortNames();
         }
+        public void SendCommad(string command, int parameter)
+        {
+            string message = command + ":" + parameter.ToString();
+
+            if(_serialPort.IsOpen)
+                _serialPort.WriteLine(message);
+        }
     }
 }

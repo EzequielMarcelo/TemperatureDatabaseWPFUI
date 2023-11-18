@@ -24,6 +24,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Unreleased] - 2023-11-18
+
+### ADDED
+- SerialHandler added in LoadController.
+- Implement WorkRoutine method in LoadController.
+- Implement PauseRoutine method in LoadController.
+- Implement SendCommand method in SerialDataAcquisition.
+
+---
+
 ## [Unreleased] - 2023-11-12
 
 ### ADDED
