@@ -21,10 +21,17 @@ namespace TemperatureDataBaseWPF.Services
         {
             while (!_loadControlCancel.IsCancellationRequested)
             {
-                WorkRoutine();
-                await Task.Delay(_parameters.WorkDuration * 1000);  //Convert to milliseconds
-                PauseRoutine();
-                await Task.Delay(_parameters.PauseDuration * 1000); //Convert to milliseconds
+                try
+                {
+                    WorkRoutine();
+                    await Task.Delay(_parameters.WorkDuration * 1000, _loadControlCancel.Token);  //Convert to milliseconds
+                    PauseRoutine();
+                    await Task.Delay(_parameters.PauseDuration * 1000, _loadControlCancel.Token); //Convert to milliseconds
+                }
+                catch
+                {
+
+                }                
             }
         }
         private void WorkRoutine()
@@ -48,8 +55,8 @@ namespace TemperatureDataBaseWPF.Services
         }
         public void SetParameters(ParametersModel parameters)
         {
-            _parameters = new ParametersModel(parameters);
             Stop();
+            _parameters = new ParametersModel(parameters);
             Start();
         }
     }
