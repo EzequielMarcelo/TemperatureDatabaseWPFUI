@@ -19,11 +19,13 @@
     <Page.Resources>
         <helpers:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
     </Page.Resources>
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <!--working-->
             <ColumnDefinition Width="*"/>
+            <!--data base-->
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <!--working-->
         <StackPanel Orientation="Vertical">
@@ -125,6 +127,22 @@
             <ui:Button Margin="0,10,0,10" 
                        Content="Apply"
                        Command="{Binding ViewModel.SetParametersCommand}"/>
+        </StackPanel>
+        <!--data base-->
+        <StackPanel Orientation="Vertical"
+                    Grid.Column="1"
+                    Margin="40,0,0,0">
+            <TextBlock Margin="0,0,0,12" 
+                       FontSize="20"
+                       FontWeight="Medium"
+                       Text="Data Base" />
+            <!--save mode-->
+            <TextBlock Margin="0,12,0,0" 
+                       Text="Mode" />
+            <RadioButton Margin="0,12,0,0"                       
+                         Content="Monitoring"/>
+            <RadioButton Margin="0,8,0,0"                         
+                         Content="Standby"/>
         </StackPanel>
     </Grid>
 </Page>

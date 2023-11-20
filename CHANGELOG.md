@@ -26,6 +26,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - 2023-11-20
 
+### ADDED
+- Column to configure database parameters.
+- Monitoring Radio button.
+- Standby Radio button.
+
+---
+
+## [Unreleased] - 2023-11-20
+
 ### FIXED
 - The task was not being closed correctly when changing the pause and work times.
 - Cancellation token added to delay.
