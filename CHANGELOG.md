@@ -24,6 +24,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Unreleased] - 2023-11-22
+
+### ADDED
+- DataBaseModel to save data in CSV file.
+- The model contains the Temperature and the reading moment.
+
+---
+
 ## [Unreleased] - 2023-11-20
 
 ### ADDED
