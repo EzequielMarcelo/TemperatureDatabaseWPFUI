@@ -24,6 +24,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Unreleased] - 2023-11-29
+
+### ADDED
+- Class responsible for saving csv file in service.
+- Asynchronous method to save data to csv file in CSV Service class.
+
+---
+
 ## [Unreleased] - 2023-11-22
 
 ### ADDED
