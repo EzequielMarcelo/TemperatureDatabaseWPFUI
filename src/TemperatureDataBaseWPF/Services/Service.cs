@@ -16,6 +16,7 @@
         #region Interface
         public SerialDataAcquisition SerialHandler => _serialHandler;
         public LoadController LoadController => _loadController;
+        public CSVService CsvHelper => _csvService;
         #endregion
     }
 }

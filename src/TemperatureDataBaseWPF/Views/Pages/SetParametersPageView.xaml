@@ -139,10 +139,16 @@
             <!--save mode-->
             <TextBlock Margin="0,12,0,0" 
                        Text="Mode" />
-            <RadioButton Margin="0,12,0,0"                       
-                         Content="Monitoring"/>
-            <RadioButton Margin="0,8,0,0"                         
-                         Content="Standby"/>
+            <RadioButton Margin="0,12,0,0"  
+                         Command="{Binding ViewModel.EnableDataBaseCommand}"
+                         Content="Monitoring"
+                         GroupName="saveSelect"
+                         IsChecked="{Binding ViewModel.CurrentDataBaseState, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=MONITORING, Mode=TwoWay}"/>
+            <RadioButton Margin="0,8,0,0"
+                         Command="{Binding ViewModel.EnableDataBaseCommand}"
+                         Content="Standby"
+                         GroupName="saveSelect"
+                         IsChecked="{Binding ViewModel.CurrentDataBaseState, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=STANDBY, Mode=TwoWay}"/>
         </StackPanel>
     </Grid>
 </Page>

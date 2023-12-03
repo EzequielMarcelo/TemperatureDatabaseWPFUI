@@ -8,13 +8,18 @@ namespace TemperatureDataBaseWPF.Services
 {
     public class CSVService
     {
+        private bool _enableToSave;
         private string _fileName;
+
         public CSVService()
         {
-            _fileName = $"{DateTime.Now:yyyy-MM-dd-hh-mm-ss tt}";
+            _enableToSave = false;
         }
         public async void SaveData(List<DataBaseModel> dataToSave)
         {
+            if (!_enableToSave)
+                return;
+
             var csvPath = Path.Combine(Environment.CurrentDirectory, $"DataBase-{_fileName}.csv");
 
             if (!File.Exists(csvPath))
@@ -35,7 +40,11 @@ namespace TemperatureDataBaseWPF.Services
                 using var csvWriter = new CsvWriter(writer, config);
                 await csvWriter.WriteRecordsAsync(dataToSave);
             }
-
+        }
+        public void ControlDataSave(bool enable)
+        {
+            _fileName = $"{DateTime.Now:yyyy-MM-dd-hh-mm-ss tt}";
+            _enableToSave = enable;
         }
     }
 }

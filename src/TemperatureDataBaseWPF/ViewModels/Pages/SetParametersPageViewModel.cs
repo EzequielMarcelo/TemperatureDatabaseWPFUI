@@ -8,12 +8,16 @@ namespace TemperatureDataBaseWPF.ViewModels.Pages
     public partial class SetParametersPageViewModel : ObservableObject
     {
         private LoadController _loadControl;
+        private CSVService _csvHelper;
+
         public SetParametersPageViewModel(IService service)
         {
             _loadControl = service.LoadController;
+            _csvHelper = service.CsvHelper;
 
             DutyCycle = 20;
             CurrentMode = WORK_MODE.MANUAL;
+            CurrentDataBaseState = DATA_BASE.STANDBY;
             OnChangeWorkMode();
         }
 
@@ -21,6 +25,11 @@ namespace TemperatureDataBaseWPF.ViewModels.Pages
         {
             AUTOMATIC,
             MANUAL
+        }
+        public enum DATA_BASE
+        {
+            STANDBY,
+            MONITORING            
         }
 
         [ObservableProperty]
@@ -34,6 +43,9 @@ namespace TemperatureDataBaseWPF.ViewModels.Pages
 
         [ObservableProperty]
         private WORK_MODE _currentMode;
+
+        [ObservableProperty]
+        private DATA_BASE _currentDataBaseState;
 
         [RelayCommand]
         private void OnChangeWorkMode()
@@ -58,6 +70,20 @@ namespace TemperatureDataBaseWPF.ViewModels.Pages
                 PauseDuration = PauseDuration,
             };
             _loadControl.SetParameters(parameters);
+        }
+        [RelayCommand]
+        private void OnEnableDataBase()
+        {
+            switch(CurrentDataBaseState)
+            {
+                case DATA_BASE.STANDBY:
+                    _csvHelper.ControlDataSave(false);
+                    break;
+
+                case DATA_BASE.MONITORING:
+                    _csvHelper.ControlDataSave(true);
+                    break;    
+            }
         }
     }
 }
