@@ -1,5 +1,6 @@
 ﻿using CsvHelper;
 using CsvHelper.Configuration;
+using System.Collections.Specialized;
 using System.Globalization;
 using System.IO;
 using TemperatureDataBaseWPF.Models;
@@ -10,17 +11,24 @@ namespace TemperatureDataBaseWPF.Services
     {
         private bool _enableToSave;
         private string _fileName;
+        private string _folderPath = Path.Combine(Environment.CurrentDirectory, "Data");
 
         public CSVService()
         {
             _enableToSave = false;
+            CreateDataBaseFolder();
+        }
+        private void CreateDataBaseFolder()
+        {
+            if (!Directory.Exists(_folderPath))
+                Directory.CreateDirectory(_folderPath);
         }
         public async void SaveData(List<DataBaseModel> dataToSave)
         {
             if (!_enableToSave)
                 return;
 
-            var csvPath = Path.Combine(Environment.CurrentDirectory, $"DataBase-{_fileName}.csv");
+            var csvPath = Path.Combine(_folderPath, $"DataBase-{_fileName}.csv");
 
             if (!File.Exists(csvPath))
             {
@@ -32,8 +40,7 @@ namespace TemperatureDataBaseWPF.Services
             {
                 var config = new CsvConfiguration(CultureInfo.InvariantCulture)
                 {
-                    // Don't write the header again.
-                    HasHeaderRecord = false,
+                    HasHeaderRecord = false,    // Don't write the header again.
                 };
                 using var streamWriter = File.Open(csvPath, FileMode.Append);
                 using var writer = new StreamWriter(streamWriter);
