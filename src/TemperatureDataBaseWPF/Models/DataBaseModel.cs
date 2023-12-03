@@ -2,12 +2,12 @@
 {
     public class DataBaseModel
     {
-        public float Temperature {  get; set; }
-        public DateTime Time { get; set; }
+        public string Temperature {  get; set; }
+        public string Time { get; set; }
         public DataBaseModel()
         {
-            Temperature = 0;
-            Time = DateTime.Now;
+            Temperature = string.Empty;
+            Time = string.Empty;
         }
     }
 }

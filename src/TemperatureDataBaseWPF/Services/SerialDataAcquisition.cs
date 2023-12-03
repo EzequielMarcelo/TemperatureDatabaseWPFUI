@@ -1,10 +1,13 @@
 ﻿using System.IO.Ports;
+using TemperatureDataBaseWPF.Models;
 using TemperatureDataBaseWPF.Settings;
 
 namespace TemperatureDataBaseWPF.Services
 {
     public class SerialDataAcquisition
     {
+        private CSVService _csvHelper;
+
         //Commands for decode
         private const string READ_TEMP = "T";
 
@@ -12,8 +15,9 @@ namespace TemperatureDataBaseWPF.Services
 
         public EventHandler<double> OnUpdateTemperature;
 
-        public SerialDataAcquisition()
+        public SerialDataAcquisition(CSVService csvHelper)
         {
+            _csvHelper = csvHelper;
             _serialPort = new SerialPort();
             _serialPort.DataReceived += SerialPort_DataReceived;
             Connect();
@@ -39,6 +43,12 @@ namespace TemperatureDataBaseWPF.Services
                     int ADCValue = int.Parse(sepateData[1]);
                     double tempCelsius = GetTempCelsius(ADCValue);
                     OnUpdateTemperature?.Invoke(this, tempCelsius);
+                    var data = new List<DataBaseModel>()
+                    {
+                        new DataBaseModel { Temperature = tempCelsius.ToString("F2"), 
+                                            Time = DateTime.Now.ToString("yyyy-MM-dd-hh-mm-ss tt") }
+                    };
+                    _csvHelper.SaveData(data);
                     break;
             }            
         }

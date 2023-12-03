@@ -24,6 +24,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Unreleased] - 2023-12-03
+
+### CHANGED
+- Save method for asynchronous with data model list as parameter in CSVService.
+- Creates the file and saves the first data with a header and then adds the data without a header.
+- Types of data saving model properties changed to string.
+
+---
+
 ## [Unreleased] - 2023-11-29
 
 ### ADDED
