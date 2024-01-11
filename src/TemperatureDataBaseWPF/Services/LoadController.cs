@@ -1,4 +1,4 @@
-using TemperatureDataBaseWPF.Models;
+﻿using TemperatureDataBaseWPF.Models;
 
 namespace TemperatureDataBaseWPF.Services
 {
@@ -8,6 +8,8 @@ namespace TemperatureDataBaseWPF.Services
         private ParametersModel _parameters;
 
         private CancellationTokenSource _loadControlCancel;
+
+        private bool _randomMode = false;
 
         private const string LOAD_COMMAND = "L";
 
@@ -23,20 +25,25 @@ namespace TemperatureDataBaseWPF.Services
             {
                 try
                 {
-                    WorkRoutine();
-                    await Task.Delay(_parameters.WorkDuration * 1000, _loadControlCancel.Token);  //Convert to milliseconds
+                    var currentParameters = _parameters;
+
+                    if(_randomMode)
+                        currentParameters = RandomParametersGenerator(_parameters);
+                 
+                    WorkRoutine(currentParameters.DutyCycle);
+                    await Task.Delay(currentParameters.WorkDuration * 1000, _loadControlCancel.Token);  //Convert to milliseconds
                     PauseRoutine();
-                    await Task.Delay(_parameters.PauseDuration * 1000, _loadControlCancel.Token); //Convert to milliseconds
+                    await Task.Delay(currentParameters.PauseDuration * 1000, _loadControlCancel.Token); //Convert to milliseconds
                 }
                 catch
                 {
 
-                }                
+                }
             }
         }
-        private void WorkRoutine()
+        private void WorkRoutine(int dutyCicle)
         {
-            _serialHandler.SendCommad(LOAD_COMMAND, _parameters.DutyCycle);
+            _serialHandler.SendCommad(LOAD_COMMAND, dutyCicle);
         }
         private void PauseRoutine()
         {
@@ -53,10 +60,11 @@ namespace TemperatureDataBaseWPF.Services
         {
             _loadControlCancel?.Cancel();
         }
-        public void SetParameters(ParametersModel parameters)
+        public void SetParameters(ParametersModel parameters, bool randomMode)
         {
             Stop();
             _parameters = new ParametersModel(parameters);
+            _randomMode = randomMode;
             Start();
         }
         private ParametersModel RandomParametersGenerator(ParametersModel parametersMax)

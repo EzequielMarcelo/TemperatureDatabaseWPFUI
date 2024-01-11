@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using System.Windows.Input;
 using TemperatureDataBaseWPF.Models;
 using TemperatureDataBaseWPF.Services;
@@ -9,6 +9,8 @@ namespace TemperatureDataBaseWPF.ViewModels.Pages
     {
         private LoadController _loadControl;
         private CSVService _csvHelper;
+
+        private bool _autoWork = false;
 
         public SetParametersPageViewModel(IService service)
         {
@@ -53,10 +55,10 @@ namespace TemperatureDataBaseWPF.ViewModels.Pages
             switch (CurrentMode)
             {
                 case WORK_MODE.MANUAL:
-                    int b = 0;
+                    _autoWork = false;
                     break;
                 case WORK_MODE.AUTOMATIC:
-                    int a = 0;
+                    _autoWork = true;
                     break;
             }
         }
@@ -69,7 +71,7 @@ namespace TemperatureDataBaseWPF.ViewModels.Pages
                 WorkDuration = WorkDuration,
                 PauseDuration = PauseDuration,
             };
-            _loadControl.SetParameters(parameters);
+            _loadControl.SetParameters(parameters, _autoWork);
         }
         [RelayCommand]
         private void OnEnableDataBase()
