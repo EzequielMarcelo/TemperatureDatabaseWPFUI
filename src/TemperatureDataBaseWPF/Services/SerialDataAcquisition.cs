@@ -40,9 +40,9 @@ namespace TemperatureDataBaseWPF.Services
             switch(command)
             {
                 case READ_TEMP:
-                    int ADCValue = int.Parse(sepateData[1]);
-                    double tempCelsius = GetTempCelsius(ADCValue);
+                    double tempCelsius = double.Parse(sepateData[1]);
                     OnUpdateTemperature?.Invoke(this, tempCelsius);
+
                     var data = new List<DataBaseModel>()
                     {
                         new DataBaseModel { Temperature = tempCelsius.ToString("F2"), 
@@ -51,12 +51,6 @@ namespace TemperatureDataBaseWPF.Services
                     _csvHelper.SaveData(data);
                     break;
             }            
-        }
-        private double GetTempCelsius(int adcValue)
-        {
-            double voltage = (adcValue * 5.0) / 1023.0; //Voltage = (ADC * maximum input voltage) / maximum ADC value
-
-            return voltage / 0.010; //The lm35 sensor is linear: 10mV/°C
         }
         private void Connect()
         {
