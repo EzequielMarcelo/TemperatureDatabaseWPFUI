@@ -1,4 +1,4 @@
-﻿using TemperatureDataBaseWPF.Models;
+using TemperatureDataBaseWPF.Models;
 
 namespace TemperatureDataBaseWPF.Services
 {
@@ -58,6 +58,19 @@ namespace TemperatureDataBaseWPF.Services
             Stop();
             _parameters = new ParametersModel(parameters);
             Start();
+        }
+        private ParametersModel RandomParametersGenerator(ParametersModel parametersMax)
+        {
+            var random = new Random();
+
+            var newParameters = new ParametersModel
+            {
+                DutyCycle = random.Next(10, parametersMax.DutyCycle),
+                PauseDuration = random.Next(1, parametersMax.PauseDuration),
+                WorkDuration = random.Next(1, parametersMax.WorkDuration)
+            };
+
+            return newParameters;
         }
     }
 }

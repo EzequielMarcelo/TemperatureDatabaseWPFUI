@@ -26,6 +26,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - 2024-01-11
 
+### ADDED
+- RandomParametersGenerator method in LoadControl.
+
+---
+
+## [Unreleased] - 2024-01-11
+
 ### FIXED
 - Call the _serialHandler.Connect method when saving port settings.
 
