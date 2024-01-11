@@ -74,7 +74,7 @@ namespace TemperatureDataBaseWPF.ViewModels.Pages
             _loadControl.SetParameters(parameters, _autoWork);
         }
         [RelayCommand]
-        private void OnEnableDataBase()
+        private void OnChangeSaveMode()
         {
             switch(CurrentDataBaseState)
             {

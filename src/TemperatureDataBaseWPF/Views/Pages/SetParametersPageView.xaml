@@ -1,4 +1,4 @@
-﻿<Page x:Class="TemperatureDataBaseWPF.Views.Pages.SetParametersPageView"
+<Page x:Class="TemperatureDataBaseWPF.Views.Pages.SetParametersPageView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -140,12 +140,12 @@
             <TextBlock Margin="0,12,0,0" 
                        Text="Mode" />
             <RadioButton Margin="0,12,0,0"  
-                         Command="{Binding ViewModel.EnableDataBaseCommand}"
+                         Command="{Binding ViewModel.ChangeSaveModeCommand}"
                          Content="Monitoring"
                          GroupName="saveSelect"
                          IsChecked="{Binding ViewModel.CurrentDataBaseState, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=MONITORING, Mode=TwoWay}"/>
             <RadioButton Margin="0,8,0,0"
-                         Command="{Binding ViewModel.EnableDataBaseCommand}"
+                         Command="{Binding ViewModel.ChangeSaveModeCommand}"
                          Content="Standby"
                          GroupName="saveSelect"
                          IsChecked="{Binding ViewModel.CurrentDataBaseState, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=STANDBY, Mode=TwoWay}"/>
