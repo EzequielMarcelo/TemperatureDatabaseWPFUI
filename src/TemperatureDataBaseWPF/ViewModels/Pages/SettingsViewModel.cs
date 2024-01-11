@@ -108,6 +108,8 @@ namespace TemperatureDataBaseWPF.ViewModels.Pages
             SerialPortSettings.Default.PortName = SelectedPortName;
             SerialPortSettings.Default.BaudRate = SelectedBaudRate;
             SerialPortSettings.Default.Save();
+
+            _serialHandler.Connect();
         }
     }
 }

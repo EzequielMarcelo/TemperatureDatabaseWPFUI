@@ -52,14 +52,15 @@ namespace TemperatureDataBaseWPF.Services
                     break;
             }            
         }
-        private void Connect()
-        {
-            _serialPort.PortName = SerialPortSettings.Default.PortName;
-            _serialPort.BaudRate = SerialPortSettings.Default.BaudRate;
-            
+        public void Connect()
+        {            
             try
             {
                 _serialPort.Close();
+
+                _serialPort.PortName = SerialPortSettings.Default.PortName;
+                _serialPort.BaudRate = SerialPortSettings.Default.BaudRate;
+
                 _serialPort.Open();
                 _serialPort.DiscardInBuffer();
             }
