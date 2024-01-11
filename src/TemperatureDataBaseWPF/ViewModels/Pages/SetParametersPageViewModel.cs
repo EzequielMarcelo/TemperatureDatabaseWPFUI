@@ -17,12 +17,16 @@ namespace TemperatureDataBaseWPF.ViewModels.Pages
             _loadControl = service.LoadController;
             _csvHelper = service.CsvHelper;
 
-            DutyCycle = 20;
+            SetDefaultValues();            
+        }
+        private void SetDefaultValues()
+        {
             CurrentMode = WORK_MODE.MANUAL;
             CurrentDataBaseState = DATA_BASE.STANDBY;
-            OnChangeWorkMode();
-        }
 
+            OnChangeWorkMode();
+            OnChangeSaveMode();
+        }
         public enum WORK_MODE
         {
             AUTOMATIC,
