@@ -1,6 +1,5 @@
 ﻿using CsvHelper;
 using CsvHelper.Configuration;
-using System.Collections.Specialized;
 using System.Globalization;
 using System.IO;
 using TemperatureDataBaseWPF.Models;
@@ -11,7 +10,7 @@ namespace TemperatureDataBaseWPF.Services
     {
         private bool _enableToSave;
         private string _fileName;
-        private string _folderPath = Path.Combine(Environment.CurrentDirectory, "Data");
+        private string _folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Temperature Data");
 
         public CSVService()
         {
