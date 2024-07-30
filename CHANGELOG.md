@@ -24,6 +24,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.0.0] - 2024-07-30
+
+### ADDED
+- Receiving Load duty cycle.
+- Saving duty cycle to csv file.
+
+---
+
 ## [Unreleased] - 2024-01-11
 
 ### ADDED

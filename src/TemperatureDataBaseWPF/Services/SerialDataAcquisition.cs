@@ -9,7 +9,7 @@ namespace TemperatureDataBaseWPF.Services
         private CSVService _csvHelper;
 
         //Commands for decode
-        private const string READ_TEMP = "T";
+        private const string READ_DATA = "D";
 
         private SerialPort _serialPort;
 
@@ -27,25 +27,32 @@ namespace TemperatureDataBaseWPF.Services
         {
            while(_serialPort.BytesToRead > 0)
             {
-                var rawData = _serialPort.ReadLine();
-                rawData = rawData.Split("\r").FirstOrDefault();  //Remove \r from data
-                Decode(rawData);
+                try
+                {
+                    var rawData = _serialPort.ReadLine();
+                    rawData = rawData.Split("\r").FirstOrDefault() ?? rawData;  //Remove \r from data
+                    Decode(rawData);
+                }
+                catch { }
+                
             }
         }
         private void Decode(string rawData)
         {
-            var sepateData = rawData.Split(":");
-            string command = sepateData[0];
+            var buffer = rawData.Split(":");
+            string command = buffer[0];
 
             switch(command)
             {
-                case READ_TEMP:
-                    double tempCelsius = double.Parse(sepateData[1]);
+                case READ_DATA:
+                    var sepateData = buffer[1].Split(",");
+                    double tempCelsius = double.Parse(sepateData[0] ?? "0");
                     OnUpdateTemperature?.Invoke(this, tempCelsius);
 
                     var data = new List<DataBaseModel>()
                     {
                         new DataBaseModel { Temperature = tempCelsius.ToString("F2"), 
+                                            DutyCycle = sepateData[1] ?? "0",
                                             Time = DateTime.Now.ToString("yyyy-MM-dd-hh-mm-ss tt") }
                     };
                     _csvHelper.SaveData(data);
